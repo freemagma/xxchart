@@ -1,3 +1,4 @@
+#[derive(Debug)]
 pub enum Background {
     Empty,
     GravityRift,
@@ -6,12 +7,14 @@ pub enum Background {
     Supernova,
 }
 
+#[derive(Debug)]
 pub enum PlanetTrait {
     Hazardous,
     Cultural,
     Industrial,
 }
 
+#[derive(Debug)]
 pub enum TechColor {
     Red,
     Green,
@@ -19,12 +22,14 @@ pub enum TechColor {
     Blue,
 }
 
+#[derive(Debug)]
 pub enum WormholeType {
     Alpha,
     Beta,
     Delta,
 }
 
+#[derive(Debug)]
 pub enum Faction {
     Sol,
     Mentak,
@@ -45,6 +50,7 @@ pub enum Faction {
     Ghosts,
 }
 
+#[derive(Debug)]
 pub enum Feature {
     Planet {
         name: &'static str,
@@ -56,6 +62,7 @@ pub enum Feature {
     Wormhole(WormholeType),
 }
 
+#[derive(Debug)]
 pub struct System {
     pub id: usize,
     pub background: Background,
@@ -64,7 +71,7 @@ pub struct System {
 }
 
 pub const NUM_SYSTEMS: usize = 51;
-pub static SYSTEMS: [System; NUM_SYSTEMS] = [
+static SYSTEMS: [System; NUM_SYSTEMS] = [
     System {
         id: 1,
         home: Some(Faction::Sol),
@@ -796,6 +803,10 @@ pub static SYSTEMS: [System; NUM_SYSTEMS] = [
         ],
     },
 ];
+
+pub fn id_system(i: usize) -> &'static System {
+    &SYSTEMS[i - 1]
+}
 
 #[cfg(test)]
 mod tests {
